@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<header>
+    <title> University of Cambrigde Poker Society </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Javier López-Contreras">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</header>
+<body>
+    
+    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <tr style="padding:0px">
+          <td style="padding:0px">
+
+    <a class="header-link" href="./index.html">
+        <h1 class="name-title">
+            <img style="padding:0px;margin: 0px;width:5%;max-width:30px" alt="poker chip emoji" src="./images/chip.png" class="hoverZoomLink">
+            
+            University of Cambrigde Poker Society
+        </h1>
+    </a>    
+        <hr class="navigation-separator">
+</td></tr></tbody></table>
+<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <tbody>
+    <tr style="padding:0px">
+      <td style="padding:0px">
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+  <tr style="padding:0px">
+    <td style="padding:2.5%;width:63%;vertical-align:middle">
+      <p>
+        We are the official <a href="https://www.cam.ac.uk/" target="_blank">University of Cambridge</a> Poker Society. We will be running regular events during and outside of term. These events include low stake cash games, tournaments as well as sponsored trips to play tournaments in London for our members. Membership is free and open to all students of the University.
+      </p>
+
+      <p>
+        To contact us, please email the president using the email <a href="mailto:tdr36@cam.ac.uk" target="_blank">tdr36@cam.ac.uk</a>
+      </p>
+
+      <h3> Comitee </h3>
+      <p>
+        <ol>
+          <li> President - Thapan Reddibathini
+          <li> Vice President - Sahil Koita
+          <li> Secretary - Ethan Kang
+          <li> Treasurer - Vimal Kamath
+          <li> Webmaster - Javier Lopez-Contreras
+          <li> Welfare Officer - Laura Chilver
+          <li> Sponsorship Officer - John Cao
+      </p>
+
+    </td>
+  </tr>
+</tbody></table>
+
+
+        <hr class="navigation-separator">
+        <p align="right">
+            Last Update: April 9th 2024
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>  
+
+</body>
+
+<script>
+  var currentPage = "experience";
+  var navBarOriginal = document.getElementById("section-navigation-bar").cloneNode(true)
+  var extraButtonsOriginal = navBarOriginal.children[navBarOriginal.children.length-2]
+  
+  function changeWindowLayout() {
+    var navBar = navBarOriginal.cloneNode(true);
+    if (window.innerWidth <= 600) {
+      for (var i=0; i < navBar.children.length; i++) {
+        var child = navBar.children[i];
+        if (child.tagName  == "BUTTON") {
+          if (child.id == "index" || child.id == currentPage) continue;
+          navBar.removeChild(child);
+          i--;
+        } 
+      }
+      var extraButtons = extraButtonsOriginal.cloneNode(true)
+      var buttonsDropdown = extraButtons.children[1];
+      for (var i=0; i < buttonsDropdown.children.length; i++) {
+        var child = buttonsDropdown.children[i];
+        console.log(child.id)
+        console.log(currentPage)
+        if (child.id.includes(currentPage) ) {
+          console.log("WIN")
+          buttonsDropdown.removeChild(child);
+          i--;
+        }
+      }
+      extraButtons.children[1].innerHTML = buttonsDropdown.innerHTML
+      navBar.children[navBar.children.length-2].innerHTML = extraButtons.innerHTML
+    }
+    else {
+      navBar.removeChild(navBar.children[navBar.children.length-2])
+    }
+    var navBarNow = document.getElementById("section-navigation-bar");
+    navBarNow.innerHTML = navBar.innerHTML
+  }
+  
+  changeWindowLayout()
+  window.onresize = changeWindowLayout;
+</script>
+
+</html>
